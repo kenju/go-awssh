@@ -1,6 +1,6 @@
 # go-awssh
 
-[![ci-test](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml/badge.svg)](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kenju/go-awssh.svg)](https://pkg.go.dev/github.com/kenju/go-awssh) [![ci-test](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml/badge.svg)](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml)
 
 `go-awssh` is a developer tool to make your SSH easy to AWS EC2 instances.
 
