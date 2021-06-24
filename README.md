@@ -30,6 +30,8 @@ Usage of go-awssh:
         a template for building FQDN for servers based on text/template interface (default "{{.Name}}.aws.example.com")
 ```
 
+## Examples
+
 ### Example A
 
 Connect `<instance_id>.aws.yourdomain.com` via `ssh` command by retrieving AWS EC2 Instance/VPC data from `us-east-1` region:
@@ -50,6 +52,32 @@ Connect `<instance_id>.aws.yourdomain.com` via `cssh` command by retrieving AWS 
     -region ap-northeast-1 \
     -ssh-bin cssh \
     -template-fqdn "{{.InstanceId}}.aws.yourdomain.com"
+```
+
+## Pro Tips
+
+### Accessing multiple servers
+
+You can make use of [`cssh(1)`](https://linux.die.net/man/1/cssh) and SSH to multiple servers at the same time. Once you install `cssh`, pass `-ssh-bin` as follows:
+
+```
+/path/to/go-awssh \
+    -region ap-northeast-1 \
+    -ssh-bin cssh \
+    -template-fqdn "{{.InstanceId}}.aws.yourdomain.com"
+```
+
+`peco` allows you to select multiple lines by [StickySelection](https://github.com/peco/peco#stickyselection) feature.
+
+[`peco.ToggleSelectionAndSelectNext`](https://github.com/peco/peco#available-actions) allows you to select the current line, saves it, and proceeds to the next line.
+
+```json
+{
+    "Keymap": {
+        "C-t": "peco.ToggleSelectionAndSelectNext"
+    },
+    "StickySelection": true
+}
 ```
 
 ## Development
