@@ -1,5 +1,7 @@
 # go-awssh
 
+[![ci-test](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml/badge.svg)](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml)
+
 `go-awssh` is a developer tool to make your SSH easy to AWS EC2 instances.
 
 Describing Instances/VPCs data, select one or multiple instances, and make connection(s) to selected instances. Caching the response of API calls for 1day using Tmpfs.
