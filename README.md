@@ -2,7 +2,7 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/kenju/go-awssh.svg)](https://pkg.go.dev/github.com/kenju/go-awssh) [![ci-test](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml/badge.svg)](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml)
 
-`go-awssh` is a developer tool to make your SSH easy to AWS EC2 instances.
+`go-awssh` is a developer tool to make your SSH to AWS EC2 instances easy.
 
 Describing Instances/VPCs data, select one or multiple instances, and make connection(s) to selected instances. Caching the response of API calls for 1day using Tmpfs.
 
@@ -18,10 +18,17 @@ Describing Instances/VPCs data, select one or multiple instances, and make conne
 
 ## Usage
 
-- `-purge-cache`
-- `-region`
-- `-ssh-bin`
-- `-template-fqdn`
+```
+Usage of go-awssh:
+  -purge-cache
+        purge local cache of AWS API calls
+  -region string
+        AWS Region for the session (default "us-east-1")
+  -ssh-bin string
+        a path to the binary for SSH (default "ssh")
+  -template-fqdn string
+        a template for building FQDN for servers based on text/template interface (default "{{.Name}}.aws.example.com")
+```
 
 ### Example A
 
@@ -44,3 +51,17 @@ Connect `<instance_id>.aws.yourdomain.com` via `cssh` command by retrieving AWS 
     -ssh-bin cssh \
     -template-fqdn "{{.InstanceId}}.aws.yourdomain.com"
 ```
+
+## Development
+
+### Unit Tests
+
+Run `make test` locally.
+
+[GitHub Actions](https://github.com/kenju/go-awssh/actions/workflows/ci-test.yml) runs when commits pushed.
+
+### Release
+
+`git tag` and push to the `master` branch.
+
+[`goreleaser`](https://goreleaser.com/) is triggered via [GitHub Actions](https://github.com/kenju/go-awssh/actions/workflows/release.yml).
