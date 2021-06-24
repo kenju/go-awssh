@@ -120,8 +120,7 @@ func main() {
 
 	pecoResult := runPeco(candidates)
 
-	fqdns := buildFqdns(config, readOutput, pecoResult)
-	servers := strings.Join(fqdns, " ")
+	servers := buildFqdns(config, readOutput, pecoResult)
 
 	runSSH(config, servers)
 }
@@ -163,13 +162,13 @@ func runPeco(candidates string) string {
 	return out.String()
 }
 
-func runSSH(config *Config, servers string) {
+func runSSH(config *Config, servers []string) {
 	_, err := exec.LookPath(config.SshBin)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	cmd := exec.Command(config.SshBin, servers)
+	cmd := exec.Command(config.SshBin, servers...)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
